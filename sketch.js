@@ -1,17 +1,27 @@
-var listSize = 5;
+var listSize;	
 var maxHeight = 45;
 var rectWidth;
 var rectHeightScale;
-var list = new Array(listSize);
-list = list.fill(0);
-list = list.map(x => Math.floor(Math.random()*maxHeight)+1);
-var sortedList = list.slice();
-sortedList.sort(greaterThan);
+var list;
+var sortedList;
 
 function setup(){
 	createCanvas(windowWidth*199/200, windowHeight*195/200);
+	
+	listSize = 5;
+	params = getURLParams();
+	if(params.size)
+		listSize = parseInt(params.size);
+	
+	list = new Array(listSize);
+	list = list.fill(0);
+	list = list.map(x => Math.floor(Math.random()*maxHeight)+1);
+	sortedList = list.slice();
+	sortedList.sort(greaterThan);
+
 	rectWidth = width/listSize;
 	rectHeightScale = height/maxHeight;
+
 	frameRate(10);
 }
 
@@ -42,4 +52,7 @@ function checkSame(original,sorted){
 			return false;
 	}
 	return true;
+}
+function windowResized() {
+  resizeCanvas(windowWidth*199/200, windowHeight*195/200);
 }
