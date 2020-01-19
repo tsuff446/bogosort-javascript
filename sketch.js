@@ -8,7 +8,7 @@ var sortedList;
 function setup(){
 	createCanvas(windowWidth*199/200, windowHeight*195/200);
 	
-	listSize = 5;
+	listSize = 8;
 	params = getURLParams();
 	if(params.size)
 		listSize = parseInt(params.size);
