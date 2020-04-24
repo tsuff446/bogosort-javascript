@@ -4,15 +4,18 @@ var rectWidth;
 var rectHeightScale;
 var list;
 var sortedList;
+var tickrate;
 
 function setup(){
 	createCanvas(windowWidth*199/200, windowHeight*195/200);
-	
+	tickrate = 10;
 	listSize = 8;
 	params = getURLParams();
 	if(params.size)
 		listSize = parseInt(params.size);
-	
+	if(params.rate)
+		tickrate = parseInt(params.tickrate);
+
 	list = new Array(listSize);
 	list = list.fill(0);
 	list = list.map(x => Math.floor(Math.random()*maxHeight)+1);
@@ -22,7 +25,7 @@ function setup(){
 	rectWidth = width/listSize;
 	rectHeightScale = height/maxHeight;
 
-	frameRate(10);
+	frameRate(tickrate);
 }
 
 function draw(){
