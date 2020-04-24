@@ -14,7 +14,7 @@ function setup(){
 	if(params.size)
 		listSize = parseInt(params.size);
 	if(params.rate)
-		tickrate = parseInt(params.tickrate);
+		tickrate = parseInt(params.rate);
 
 	list = new Array(listSize);
 	list = list.fill(0);
